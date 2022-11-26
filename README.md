@@ -1,7 +1,7 @@
 # TweetyTerminal
 1ο Project Εργαλείων Ανάπτυξης Λογισμικού και Προγραμματισμού Συστημάτων
 
-![7254u0](https://user-images.githubusercontent.com/66788358/204063390-1173a70c-733b-488f-812e-3271c307491c.jpg)
+![727xzh](https://user-images.githubusercontent.com/66788358/204110755-551914d1-6424-4931-a022-e4959c57d718.jpg)
 
 Users :
   - Ηλίας aka TheStopDefiler -> Dev
