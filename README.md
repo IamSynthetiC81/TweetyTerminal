@@ -5,7 +5,7 @@
 
 Users :
   - Ηλίας aka TheStopDefiler -> Dev
-  - Γιώργος aka GeorgeAngel1998 -> Loggin
+  - Γιώργος aka GeorgeAngel1998 -> Kenny Loggins
   - Νίκος aka NCH-dev -> Refactoring
   - Μάριος aka IamSynthetiC81 -> Unit Testing
   - Γιώργος aka Ghost -> Profiling 
