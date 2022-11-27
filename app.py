@@ -3,19 +3,24 @@ import random
 import sys
 from datetime import datetime
 
-# Global Path Variable *New
+# Global Path Variable
 Path = "tweetdhead300000.json"
 
 # Profiling : Save length of tweets on buffer instead of calling len().
-# Changes still need to be made to the code
 TweetsSize = int(0)
 
-
 def loadTweets(path=Path) -> list:
+    """
+    Load tweets from the specified path and return them
+    :param path: Path to the json file containing the tweets
+    :return:  Returns a list of tweets
+    """
     array = []
     with open(path, "r") as f:
         lines = f.readlines()
         for line in lines:
+            if line == "\n":
+                continue
             tweet = json.loads(line)
             array.append(tweet)
         f.close()
@@ -26,10 +31,15 @@ def loadTweets(path=Path) -> list:
     return array
 
 
-tweetArray = loadTweets()
+tweetArray = loadTweets()               # Global Variable containing tweets
 
 
-def deleteTweet(idx, tweets=None):
+def deleteTweet(idx, tweets=None) -> None:
+    """
+    Delete the tweet in the specified index
+    :param idx: Index of the tweet to be deleted
+    :param tweets: List of tweets. By default, '~tweetArray' is used.
+    """
     if tweets is None:
         tweets = tweetArray
     del tweets[idx]
@@ -39,7 +49,12 @@ def deleteTweet(idx, tweets=None):
     TweetsSize -= 1
 
 
-def readTweet(idx, tweets=None):
+def readTweet(idx, tweets=None) -> None:
+    """
+    Prints out the tweet at the specified index.
+    :param idx: Index of the tweet
+    :param tweets: List of tweets. By default, '~tweetArray' is used.
+    """
     if tweets is None:
         tweets = tweetArray
 
@@ -47,7 +62,12 @@ def readTweet(idx, tweets=None):
         tweets[idx]['created_at']))
 
 
-def createTweet(string=None, tweets=None):
+def createTweet(string=None, tweets=None) -> None:
+    """
+    Creates a new tweet and appends it to the list
+    :param string: Text of the new tweet. Can be ignored for console input
+    :param tweets: List of tweets. By default, '~tweetArray' is used.
+    """
     if tweets is None:
         tweets = tweetArray
 
@@ -64,7 +84,13 @@ def createTweet(string=None, tweets=None):
     TweetsSize += 1
 
 
-def updateTweet(current, text, tweets=None):
+def updateTweet(current, text, tweets=None) -> None:
+    """
+    Updates the indexed tweet with the specified text.
+    :param current: Index of the tweet to be altered.
+    :param text: String to be placed into the tweet
+    :param tweets: List of tweets. By default, '~tweetArray' is used.
+    """
     if tweets is None:
         tweets = tweetArray
 
@@ -75,7 +101,12 @@ def updateTweet(current, text, tweets=None):
     tweets[current] = tweet
 
 
-def saveToDisk(path="output.json", tweets=None):
+def saveToDisk(path="output.json", tweets=None) -> None:
+    """
+    Saves the specified list of tweets into the specified path
+    :param path: Name and path of the file to be created or saved on.
+    :param tweets: List of tweets. By default, '~tweetArray' is used.
+    """
     if tweets is None:
         tweets = tweetArray
 
@@ -88,13 +119,20 @@ def saveToDisk(path="output.json", tweets=None):
     f.close()
 
 
-def game(tweets):
+def game(tweets) -> None:
+    """
+    Prints a random tweet from the list
+    :param tweets: List of tweets. By default, '~tweetArray' is used.
+    """
     random.seed(datetime.now())
     idx = random.randrange(0, TweetsSize - 1)
     print(tweets[idx]['text'])
 
 
-def printHelp():
+def printHelp() -> None :
+    """
+    Helper function to print the menu
+    """
     print(
         "======================================================\nc: Create new tweet\nr <tweet ID>: Read tweet with "
         "specified ID\nu <tweet ID>: Update tweet with specified ID\nd: Delete current tweet\ng: Display random tweet "
@@ -104,7 +142,6 @@ def printHelp():
 
 def terminalUI():
     current = 0
-    # tweets = loadTweets(Path)
     print("Welcome to the US political degeneracy cesspool(Twitter)\nType h for help...")
     quit = False
     a = ' '
@@ -142,6 +179,7 @@ def menu(current, tweets, a):
 
     elif a[0] == "=":  # Print Current Tweet
         print("Current index: " + str(current))
+        #TODO : Fix this
 
     elif a[0] == "$":  # Print Last Tweet
         current = TweetsSize - 1
@@ -203,4 +241,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    sys.exit(main(sys.argv[1:]))

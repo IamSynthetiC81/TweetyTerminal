@@ -1,70 +1,73 @@
 import app as uut
-
-Path = "tweetdhead300000.json"
-
-tweets = list
+import unittest
 
 
-def test_loadTweets(path) -> None:
-    assert len(tweets) != 0, "Should not be empty"
-    assert len(tweets) == 299999, "length must be 299999"
-    assert str(tweets[0]['text']) == "If mitt romney say he gunna legalize weed then obama is fucked"
-    assert str(tweets[1]['text']) == "@SuePalmers As a youth who has lived abroad, I share the President's feelings. It changes how you view foreign relations quite a bit."
-    assert str(tweets[3]['text']) == "Can we please stop pretending that Obama is a good man? He is not. Today proved that. Being a good father alone does not make you a good man"
+class test_app_class(unittest.TestCase):
 
+    Path = "tweetdhead300000.json"          # Local Path Variable
+    tweets = list                           # Local Tweets Array
 
-def test_update_tweet():
-    for i in range(len(tweets)):
-        string = "Tweet " + str(i)
+    def setUp(self) -> None:
+        """
+        For each test we read, and load the data from the file. This
+        counts as a reset.
+        """
+        uut.tweetArray = uut.loadTweets(self.Path)
+        self.tweets = uut.tweetArray
 
-        uut.updateTweet(int(i), string, tweets)
+    def test_loadTweets(self) -> None:
+        self.assertNotEqual(self.tweets, 0, "Should not be empty")
+        self.assertEqual(len(self.tweets), 299999, "length must be 299999")
+        self.assertEqual(str(self.tweets[0]['text']), "If mitt romney say he gunna legalize weed then obama is fucked")
+        self.assertEqual(str(self.tweets[1]['text']), "@SuePalmers As a youth who has lived abroad, I share the President's feelings. It changes how you view foreign relations quite a bit.")
+        self.assertEqual(str(self.tweets[3]['text']), "Can we please stop pretending that Obama is a good man? He is not. Today proved that. Being a good father alone does not make you a good man")
 
-        assert (str(tweets[int(i)]['text']) == string)
+    def test_update_tweet(self):
+        for i,tweet in enumerate(self.tweets):
+            string = "Tweet " + str(i)
 
+            uut.updateTweet(int(i), string, self.tweets)
 
-def test_create_tweet():
-    tweet_texts = ["I like big butts an´ I can not lie.",
-                   "You otha brothas can´t deny.",
-                   "That when a girl walks in wit´ a itty bitty waist an´",
-                   "A round thing in yo´ face. You get SPRUNG.",
-                   "Want to pull up tough, cuz you notice that butt was STUFFED.",
-                   "Deep in the jeans she has wearin´.",
-                   "I am hooked an´ I cannot stop starin´.",
-                   "Oh baby, I want to get wit´ ya,",
-                   "And so on, and on, and on ..."
-                   ]
+            self.assertNotEqual(string, tweet['text'])
+            self.assertEqual (str(self.tweets[int(i)]['text']), string)
 
-    for text in tweet_texts:
-        uut.createTweet(text)
-        assert uut.tweetArray[uut.TweetsSize - 1]['text'] == text
+    def test_create_tweet(self):
+        tweet_texts = ["I like big butts an´ I can not lie.",
+                       "You otha brothas can´t deny.",
+                       "That when a girl walks in wit´ a itty bitty waist an´",
+                       "A round thing in yo´ face. You get SPRUNG.",
+                       "Want to pull up tough, cuz you notice that butt was STUFFED.",
+                       "Deep in the jeans she has wearin´.",
+                       "I am hooked an´ I cannot stop starin´.",
+                       "Oh baby, I want to get wit´ ya,",
+                       "And so on, and on, and on ..."
+                       ]
 
+        for text in tweet_texts:
+            uut.createTweet(text)
+            self.assertEqual(uut.tweetArray[uut.TweetsSize - 1]['text'], text)
 
-def test_save_to_disk():
-    for i in range(uut.TweetsSize):
-        uut.updateTweet(i, "Tweet " + str(i))
+    def test_save_to_disk(self):
+        for i in range(uut.TweetsSize):
+            uut.updateTweet(i, "Tweet " + str(i))
 
-    uut.saveToDisk()
-    tweets2 = uut.loadTweets()
+        uut.saveToDisk()
 
-    for i in range(uut.TweetsSize):
-        assert tweets2[i] == uut.tweetArray[i]['text']
+        tweets2 = uut.loadTweets("output.json")
 
+        for i in range(uut.TweetsSize):
+            self.assertEqual(tweets2[i]['text'], uut.tweetArray[i]['text'])
 
-def test_delete_tweet():
-    tweets2 = list.copy(uut.tweetArray)
+    def test_delete_tweet(self):
+        tweets2 = list.copy(uut.tweetArray)
 
-    assert tweets2[0]['text'] == uut.tweetArray[0]['text']
+        self.assertEqual(tweets2[0]['text'], uut.tweetArray[0]['text'])
 
-    for i in range(1,uut.TweetsSize):
-        uut.deleteTweet(0)
-        assert tweets2[i]['text'] == uut.tweetArray[0]['text']
-
+        for i in range(1, uut.TweetsSize):
+            uut.deleteTweet(0)
+            self.assertEqual(tweets2[i]['text'], uut.tweetArray[0]['text'])
 
 
 if __name__ == "__main__":
-    tweets = uut.loadTweets(Path)
+    unittest.main()
 
-    test_loadTweets(Path)
-    test_update_tweet()
-    test_create_tweet()
-    test_delete_tweet()
