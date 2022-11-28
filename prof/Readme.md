@@ -118,7 +118,7 @@ python3 -m memory_profiler app.py
 ```
 
 ### JSON Results
-![There was supposed to be an image(.images/JSON.png) here](/.images/JSON.png "Results of mprof on pythons JSON parser").
+![There was supposed to be an image(.images/JSON.png) here](./images/JSON.png "Results of mprof on pythons JSON parser")
 ```
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
