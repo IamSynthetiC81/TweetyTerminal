@@ -118,8 +118,7 @@ python3 -m memory_profiler app.py
 ```
 
 ### JSON Results
-![There was supposed to be an image(.images/JSON.png) here](./.images/JSON.png)
-![plot](./directory_1/directory_2/.../directory_n/plot.png)
+![There was supposed to be an image(.images/JSON.png) here](./.images/JSON.png "Results of mprof on JSON parser")
 ```
 Line #    Mem usage    Increment  Occurrences   Line Contents
 =============================================================
@@ -171,7 +170,7 @@ Line #    Mem usage    Increment  Occurrences   Line Contents
 ```
 ### RapidJSON Results
 
-![There was supposed to be an image(.images/RapidJSON.png) here](/.images/RapidJSON.png "Results of mprof on RapidJSON parser").
+![There was supposed to be an image(.images/RapidJSON.png) here](./.images/RapidJSON.png "Results of mprof on RapidJSON parser").
 
 ---
 
