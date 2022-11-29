@@ -30,4 +30,5 @@ We create some new tweets and assert that they have been added corectly into the
 We update each tweet with the string `Tweet + {index}` and save it into the disk. We then load the file into another array and assert each tweet has come through correctly.
 
 ### test_delete_tweet()
-	We keep deleting the first tweet and assert the next one took its place aswell as that the list size was decremented correctly.
+
+We keep deleting the first tweet and assert the next one took its place aswell as that the list size was decremented correctly.
