@@ -1,0 +1,11 @@
+Filename: /home/marios/TweetyTerminal/profiling.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    13     22.0 MiB     22.0 MiB           1   @profile(stream=fp)
+    14                                         def ProfileRunnable(runnable: str) -> None:
+    15     22.0 MiB      0.0 MiB           1       pr.enable()
+    16   4619.5 MiB   4597.5 MiB           1       cProfile.run(runnable, PATH + 'restats')
+    17   4619.5 MiB      0.0 MiB           1       pr.disable()
+
+

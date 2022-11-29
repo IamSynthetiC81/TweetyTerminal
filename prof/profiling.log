@@ -1,0 +1,31 @@
+Tue Nov 29 18:08:20 2022    prof/profiling.prof
+
+         837714 function calls in 21.611 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000   21.611   21.611 {built-in method builtins.exec}
+        1    0.000    0.000   21.611   21.611 <string>:1(<module>)
+        1    0.034    0.034   21.611   21.611 /home/marios/TweetyTerminal/app.py:222(main)
+        1    1.074    1.074   19.109   19.109 /home/marios/TweetyTerminal/app.py:14(loadTweets)
+   299999   16.292    0.000   16.292    0.000 {built-in method rapidjson.loads}
+        1    0.000    0.000    2.467    2.467 /home/marios/TweetyTerminal/app.py:148(terminalUI)
+        1    2.467    2.467    2.467    2.467 {built-in method builtins.input}
+        1    0.708    0.708    1.714    1.714 {method 'readlines' of '_io._IOBase' objects}
+   118849    0.418    0.000    1.006    0.000 /usr/lib/python3.10/codecs.py:319(decode)
+   118849    0.588    0.000    0.588    0.000 {built-in method _codecs.utf_8_decode}
+   299999    0.029    0.000    0.029    0.000 {method 'append' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method io.open}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 /home/marios/TweetyTerminal/app.py:161(menu)
+        1    0.000    0.000    0.000    0.000 {method 'close' of '_io.TextIOWrapper' objects}
+        1    0.000    0.000    0.000    0.000 /usr/lib/python3.10/codecs.py:309(__init__)
+        1    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 /usr/lib/python3.10/codecs.py:260(__init__)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {method '__exit__' of '_io._IOBase' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+
+
