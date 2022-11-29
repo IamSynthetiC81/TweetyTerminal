@@ -3,13 +3,11 @@ import random
 import sys
 from datetime import datetime
 
-# Global Path Variable *New
+# Global Path Variable
 Path = "tweetdhead300000.json"
 
 # Profiling : Save length of tweets on buffer instead of calling len().
-# Changes still need to be made to the code
 TweetsSize = int(0)
-
 
 def loadTweets(path=Path) -> list:
     """
@@ -243,4 +241,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    sys.exit(main(sys.argv[1:]))

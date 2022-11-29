@@ -4,30 +4,31 @@ import unittest
 
 class test_app_class(unittest.TestCase):
 
-    Path = "tweetdhead300000.json"
-    tweets = list
+    Path = "tweetdhead300000.json"          # Local Path Variable
+    tweets = list                           # Local Tweets Array
 
     def setUp(self) -> None:
-        self.tweets = uut.loadTweets(self.Path)
-        print("SetUp")
-
-    def tearDown(self) -> None:
-        self.tweets = None
-        print("TearDown")
+        """
+        For each test we read, and load the data from the file. This
+        counts as a reset.
+        """
+        uut.tweetArray = uut.loadTweets(self.Path)
+        self.tweets = uut.tweetArray
 
     def test_loadTweets(self) -> None:
-        self.assertNotEqual(self.tweets,0 , "Should not be empty")
-        self.assertEqual(len(self.tweets) , 299999, "length must be 299999")
+        self.assertNotEqual(self.tweets, 0, "Should not be empty")
+        self.assertEqual(len(self.tweets), 299999, "length must be 299999")
         self.assertEqual(str(self.tweets[0]['text']), "If mitt romney say he gunna legalize weed then obama is fucked")
         self.assertEqual(str(self.tweets[1]['text']), "@SuePalmers As a youth who has lived abroad, I share the President's feelings. It changes how you view foreign relations quite a bit.")
         self.assertEqual(str(self.tweets[3]['text']), "Can we please stop pretending that Obama is a good man? He is not. Today proved that. Being a good father alone does not make you a good man")
 
     def test_update_tweet(self):
-        for i in range(len(self.tweets)):
+        for i,tweet in enumerate(self.tweets):
             string = "Tweet " + str(i)
 
             uut.updateTweet(int(i), string, self.tweets)
 
+            self.assertNotEqual(string, tweet['text'])
             self.assertEqual (str(self.tweets[int(i)]['text']), string)
 
     def test_create_tweet(self):
