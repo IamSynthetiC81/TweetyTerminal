@@ -3,9 +3,6 @@
 The recources we are profiling are :
 - Memory Allocation
 - Time allocation 
-- George Washington
-* John Adams
-+ Thomas Jefferson
 
 While using the app, and while looking at the code, it is obvious that the majority of recources are been taken by the `loadTweet` and `saveToDisk` functions. So we will focus on those.
 
