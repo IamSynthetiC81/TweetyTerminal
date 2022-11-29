@@ -61,11 +61,15 @@ class test_app_class(unittest.TestCase):
     def test_delete_tweet(self):
         tweets2 = list.copy(uut.tweetArray)
 
+        size = uut.TweetsSize
+
         self.assertEqual(tweets2[0]['text'], uut.tweetArray[0]['text'])
 
         for i in range(1, uut.TweetsSize):
             uut.deleteTweet(0)
+            size -= 1
             self.assertEqual(tweets2[i]['text'], uut.tweetArray[0]['text'])
+            self.assertEqual(size,uut.TweetsSize)
 
 
 if __name__ == "__main__":
