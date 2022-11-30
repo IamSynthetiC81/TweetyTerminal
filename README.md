@@ -6,6 +6,10 @@ The recources we are profiling are :
 
 While using the app, and while looking at the code, it is obvious that the majority of recources are been taken by the `loadTweet` and `saveToDisk` functions. So we will focus on those.
 
+Efforts where made to improve the loading of the tweets through a variety of JSON parsers, but most did not work, or offered no major advantage.
+
+We found that RapidJSON offered better results while been easy to implement, and therefore we will compare it to pythons default JSON parser.
+
 ## Time allocation
 
 As a benchmark we are loading the program, and press 'x' to call `SaveToDisk()`. 
